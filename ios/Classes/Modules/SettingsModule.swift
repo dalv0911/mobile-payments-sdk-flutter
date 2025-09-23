@@ -53,4 +53,16 @@ public class SettingsModule {
             result(NSNull())
         }
     }
+    
+    public static func getTrackingConsentState(result: @escaping FlutterResult) {
+        let consentState = settingsManager.trackingConsentState
+        result(SettingsMapper.getTrackingConsentState(from: consentState.rawValue))
+    }
+
+    public static func updateTrackingConsent(result: @escaping FlutterResult, granted: Bool) {
+        settingsManager.updateTrackingConsent(withGranted: granted)
+        result(true)
+        
+    }
+
 }
