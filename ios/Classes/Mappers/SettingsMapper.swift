@@ -1,14 +1,28 @@
 import SquareMobilePaymentsSDK
 
-public class SettingsMapper {
+public enum TrackingConsent: String {
+    case pending     = "PENDING"
+    case granted     = "GRANTED"
+    case denied      = "DENIED"
+    case notRequired = "NOT_REQUIRED"
+    case unknown     = "UNKNOWN"
 
-    static func getTrackingConsentState(from state: UInt) -> String {
+    init(from state: TrackingConsentState) {
         switch state {
-        case 0: return "PENDING"
-        case 1: return "GRANTED"
-        case 2: return "DENIED"
-        case 3: return "NOT_REQUIRED"
-        default: return "UNKNOWN"
+        case .pending:     self = .pending
+        case .granted:     self = .granted
+        case .denied:      self = .denied
+        case .notRequired: self = .notRequired
+        @unknown default:  self = .unknown
+        }
+    }
+
+    init(rawValue: UInt) {
+        if let sdkState = TrackingConsentState(rawValue: rawValue) {
+            self.init(from: sdkState)
+        } else {
+            self = .unknown
         }
     }
 }
+

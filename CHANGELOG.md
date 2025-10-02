@@ -2,6 +2,8 @@
 
 Upgrade native SDKs: Android 2.3.1, iOS: 2.3.0
 Remove deprecated use of toLower
+- Adding consent tracking  
+- (iOS) reader info states
 
 ## 2025.7.1
 
