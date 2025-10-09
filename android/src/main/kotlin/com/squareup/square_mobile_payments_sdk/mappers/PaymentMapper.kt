@@ -62,6 +62,10 @@ class PaymentMapper {
                     builder.autocomplete(paymentParameters.get("autocomplete") as? Boolean ?: false)
                 }
 
+                if(paymentParameters.get("idempotencyKey") != null) {
+                    builder.idempotencyKey(paymentParameters.get("idempotencyKey") as? String)
+                }
+
                 if(paymentParameters.get("paymentAttemptId") != null) {
                     builder.paymentAttemptId(paymentParameters.get("paymentAttemptId") as? String)
                 }
