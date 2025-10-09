@@ -64,9 +64,8 @@ class SettingsModule {
             result.success(consentState.name)
         }
         @JvmStatic
-        @JvmStatic
         fun updateTrackingConsent(result: MethodChannel.Result, granted: Boolean) {
-            settingsManager.updateTrackingConsent(granted) // Assuming the method name is similar
+            settingsManager.updateTrackingConsent(granted)
             result.success(true)
         }
 
